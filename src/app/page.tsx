@@ -4,6 +4,8 @@ import { useState } from "react";
 import { api } from "../../convex/_generated/api";
 
 export default function Home() {
+  //  adding this comment to see how it performs on ai-review-agent
+  const a = 2;
   const messages = useQuery(api.functions.message.list);
   const createMessage = useMutation(api.functions.message.create);
   const [input, setInput] = useState("");

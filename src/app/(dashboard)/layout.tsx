@@ -29,22 +29,26 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  <>
-    <Authenticated>
-      <SidebarProvider>
-        <DashboardSidebar />
-        {children}
-      </SidebarProvider>
-    </Authenticated>
-    <Unauthenticated>
-      <RedirectToSignIn />
-    </Unauthenticated>
-  </>;
+  return (
+    <>
+      <Authenticated>
+        <SidebarProvider>
+          <DashboardSidebar />
+          {children}
+        </SidebarProvider>
+      </Authenticated>
+      <Unauthenticated>
+        <RedirectToSignIn />
+      </Unauthenticated>
+    </>
+  );
 }
 
 function DashboardSidebar() {
   const user = useQuery(api.functions.user.get);
-  if (!user) return null;
+  if (!user) {
+    return null;
+  }
   return (
     <Sidebar>
       <SidebarContent>
